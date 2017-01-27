@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Book Catalog</title>
+
+        <script src="lib/angular.js"></script>       
+        <link rel="stylesheet" href="lib/bootstrap.min.css">
+
+        <script src="js/controller.js"></script>
+        <script src="js/index.js"></script>
+
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body ng-app="app" ng-controller="CatalogController">
+        <div class="container">
+        <h1>My Book Catalog</h1>
+
+        <p class="bg-danger text-danger" ng-show="errMessage" ng-bind="errMessage" ></p>
+
+        <div id="divListCatalog" ng-show="isListMode">            
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                </tr>
+                <tr ng-repeat="book in books">
+                    <td><a href="#/books/{{book.id}}" ng-click="showDetail(book.id)">{{book.title}}</a></td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.genre}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="divBookDetail" ng-hide="isListMode">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img width="90%" src="data:image/jpeg;base64,{{bookDetail.coverImage}}" />
+                </div>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <strong><span class="col-sm-1">Title</span></strong>
+                        <span class="col-sm-9 text-uppercase" ng-bind="bookDetail.title"></span>
+                    </div>
+                    <div class="row">
+                        <strong><span class="col-sm-1">Author</span></strong>
+                        <span class="col-sm-9" ng-bind="bookDetail.author"></span>
+                    </div>
+                    <div class="row">
+                        <strong><span class="col-sm-1">Genre</span></strong>
+                        <span class="col-sm-9" ng-bind="bookDetail.genre"></span>
+                    </div>
+                    <div class="row">
+                        <strong><span class="col-sm-1">Synopsis</span></strong>
+                        <span class="col-sm-9" ng-bind="bookDetail.synopsis"></span>
+                    </div>
+                    <div class="row">
+                        <p class="text-right"><a href="#" ng-click="showList()">Go Back</a></p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        </div> <!-- End of Container -->
+    </body>
+</html>
