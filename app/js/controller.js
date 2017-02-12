@@ -2,27 +2,46 @@ BookCatalogController = {
     /**
      * CatalogController
      */
-    Controller: function($scope, WebService){
+    Controller: function($scope, $location, $rootScope, $routeParams, WebService){
+        console.log("BookCatalogController -- location: " + $location.absUrl())
+
         WebService.listAll($scope);
 
         $scope.isListMode = true;
 
-        $scope.showDetail = function(bookId) {
-            WebService.findById($scope, bookId);
-        };
+        $rootScope.$on('$routeChangeSuccess', function(angularEvent,current,previous) {
+            if (current.originalPath == "/books") {
+                WebService.listAll($scope);
+            } else if (current.originalPath == "/books/:bookId") {
+                WebService.findById($scope, $routeParams.bookId);
+            }
 
-        $scope.showList = function() {
-           WebService.listAll($scope);
-        };
+            // Clear the error message from previous requests
+            $scope.errMessage = "";
+        });
+
+        // A custom search function for use with the filter
+        // It compares all the properties to the search field, except for the
+        // image base64 contents
+        $scope.evaluateFilter = function(book, index, array) {
+            console.log("FILTERIN " + $scope);
+            console.log("FILTERING " + $scope.filterText);
+            console.log("FILTERINB " + $scope.books);
+            console.log(book.title + "    " + book.title.toUpperCase().indexOf($scope.filterText));
+            return (!$scope.filterText) || 
+                (book.title.toUpperCase().indexOf($scope.filterText) >= 0) || 
+                (book.author.toUpperCase().indexOf($scope.filterText) >= 0) || 
+                (book.genre.toUpperCase().indexOf($scope.filterText) >= 0) ;
+        }
     },
 
     /**
      * Provides a utility object to handle the calls to the Book Catalog webservice
      */
-    WebService: function($http, url) {
+    WebService: function($http, server_url) {
         return {
             listAll: function($scope) {
-                $http.get(url + "/books")
+                $http.get(server_url + "/books")
                     .success(function(data, status, headers, config){
                         $scope.books = data;
                         $scope.isListMode = true;
@@ -36,7 +55,7 @@ BookCatalogController = {
                     });
             },
             findById: function($scope, id) {
-                $http.get(url + "/books/" + id)
+                $http.get(server_url + "/books/" + id)
                     .success(function(data, status, headers, config){
                         $scope.bookDetail = data;
                         $scope.isListMode = false;
@@ -46,7 +65,6 @@ BookCatalogController = {
                             $scope.errMessage = "Service Unavailable!";
                         } else {
                             $scope.errMessage = status + " " + data;
-                            alert($scope.errMessage);
                         }                        
                     });
             }

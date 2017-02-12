@@ -20,6 +20,8 @@ function handleRequest (request, response) {
     var method = request.method;
     console.log("Request [" + method + "] for " + pathname + " received.");
 
+    response.writeHead({'Access-Control-Allow-Origin': '*'});
+
     if (method == "GET" && (pathname == "/books" || pathname == "/books/")) {
         listAll(request, response);
     } else if (method == "GET" && (pathname.match("/books/[0-9]+"))) {

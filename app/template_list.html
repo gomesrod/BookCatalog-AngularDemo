@@ -1,0 +1,18 @@
+<div id="divListCatalog" ng-show="isListMode">
+    <div class="text-right">
+        <label for="txtFilter">Filter: <input type="text" id="txtFilter" ng-model="filterText" />
+    </div>
+    <table class="table table-condensed table-hover">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+        </tr>
+        <tr ng-repeat="book in books | filter:evaluateFilter">
+            <td><a href="#/books/{{book.id}}">{{book.title}}</a></td>
+            <td>{{book.author}}</td>
+            <td>{{book.genre}}</td>
+        </tr>
+    </table>
+</div>
+<div class="navBar">You are in: Home</div>

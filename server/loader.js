@@ -5,21 +5,25 @@ var repository = require("./repository");
 
 books = [
     // IDs are generated on insert
-    {title: "One Jundred Years of Solitude", author: "Gabriel Garcia Márquez", genre: "Novel", 
+    {title: "One Hundred Years of Solitude", author: "Gabriel Garcia Márquez", genre: "Novel", 
     synopsis: "One Hundred Years of Solitude tells the story of the rise and fall, birth and death of the mythical town of Macondo through the history of the Buendía family. Inventive, amusing, magnetic, sad, and alive with unforgettable men and women -- brimming with truth, compassion, and a lyrical magic that strikes the soul -- this novel is a masterpiece in the art of fiction.",
-    coverImage: getImages()[0]},
+    mediaFiles: {coverImage: getImages()[0]}
+    },
 
     {title: "The Godfather", author: "Mario Puzzo", genre: "Novel", 
     synopsis: "A searing portrayal of the Mafia underworld, The Godfather introduced readers to the first family of American crime fiction, the Corleones, and their powerful legacy of tradition, blood, and honor. The seduction of power, the pitfalls of greed, and the allegiance to family—these are the themes that have resonated with millions of readers around the world and made The Godfather the definitive novel of the violent subculture that, steeped in intrigue and controversy, remains indelibly etched in our collective consciousness.",
-    coverImage: getImages()[1]},
+    mediaFiles: {coverImage: getImages()[1]}
+    },
 
     {title: "Lord Of The Rings - The Fellowship of the Ring", author: "J.R.R. Tolkien", genre: "Adventure", 
     synopsis: "In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell into the hands of Bilbo Baggins, as told in The Hobbit. In a sleepy village in the Shire, young Frodo Baggins finds himself faced with an immense task, as his elderly cousin Bilbo entrusts the Ring to his care. Frodo must leave his home and make a perilous journey across Middle-earth to the Cracks of Doom, there to destroy the Ring and foil the Dark Lord in his evil purpose.",
-    coverImage: getImages()[2]},
+    mediaFiles: {coverImage: getImages()[2]}
+    },
 
     {title: "Effective Java", author: "Joshua Block", genre: "Technical", 
     synopsis: "Are you looking for a deeper understanding of the Java™ programming language so that you can write code that is clearer, more correct, more robust, and more reusable? Look no further! Effective Java™, Second Edition, brings together seventy-eight indispensable programmer’s rules of thumb: working, best-practice solutions for the programming challenges you encounter every day.",
-    coverImage: getImages()[3]},
+    mediaFiles: {coverImage: getImages()[3]}
+    },
 ];
 
 console.log("Creating initial load on Books database");

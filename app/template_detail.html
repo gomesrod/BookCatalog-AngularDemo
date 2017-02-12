@@ -1,0 +1,26 @@
+<div id="divBookDetail" ng-hide="isListMode">
+    <div class="row">
+        <div class="col-sm-2">
+            <img width="90%" src="data:image/jpeg;base64,{{bookDetail.mediaFiles.coverImage}}" />
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <strong><span class="col-sm-1">Title</span></strong>
+                <span class="col-sm-9 text-uppercase" ng-bind="bookDetail.title"></span>
+            </div>
+            <div class="row">
+                <strong><span class="col-sm-1">Author</span></strong>
+                <span class="col-sm-9" ng-bind="bookDetail.author"></span>
+            </div>
+            <div class="row">
+                <strong><span class="col-sm-1">Genre</span></strong>
+                <span class="col-sm-9" ng-bind="bookDetail.genre"></span>
+            </div>
+            <div class="row">
+                <strong><span class="col-sm-1">Synopsis</span></strong>
+                <span class="col-sm-9" ng-bind="bookDetail.synopsis"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="navBar">You are in: Book Detail  <a href="#/books">(Go to Home)</a></div>
