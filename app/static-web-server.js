@@ -56,6 +56,7 @@ http.createServer(function (request, response) {
         }
         else {
             response.writeHead(200, { 'Content-Type': contentType });
+            //response.writeHead({'Access-Control-Allow-Origin': '*'});
             response.end(content, 'utf-8');
         }
     });

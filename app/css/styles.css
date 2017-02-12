@@ -6,6 +6,7 @@ h1 {
 .navBar {
     color: #F7F7F7;
     background-color: #1581FF;
+    margin-top: 10px;
 }
 
 .navBar a {

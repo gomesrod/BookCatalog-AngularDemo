@@ -19,8 +19,8 @@ function handleRequest (request, response) {
     var pathname = url.parse(request.url).pathname;
     var method = request.method;
     console.log("Request [" + method + "] for " + pathname + " received.");
-
-    response.writeHead({'Access-Control-Allow-Origin': '*'});
+    
+    response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:8125");
 
     if (method == "GET" && (pathname == "/books" || pathname == "/books/")) {
         listAll(request, response);

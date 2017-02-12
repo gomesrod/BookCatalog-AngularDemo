@@ -1,18 +1,22 @@
-<div id="divListCatalog" ng-show="isListMode">
+<div id="divListCatalog">
     <div class="text-right">
-        <label for="txtFilter">Filter: <input type="text" id="txtFilter" ng-model="filterText" />
+        <label for="txtFilter">Filter: <input type="text" id="txtFilter" ng-model="filterText" ng-disabled="!books.length || books.length == 0" />
     </div>
-    <table class="table table-condensed table-hover">
+    <table class="table table-condensed table-hover" ng-show="books.length > 0">
         <tr>
             <th>Title</th>
             <th>Author</th>
             <th>Genre</th>
         </tr>
-        <tr ng-repeat="book in books | filter:evaluateFilter">
+        <tr ng-repeat="book in books | bookFilter:filterText">
             <td><a href="#/books/{{book.id}}">{{book.title}}</a></td>
             <td>{{book.author}}</td>
             <td>{{book.genre}}</td>
         </tr>
     </table>
+    <div class="bg-warning text-warning" ng-show="books.length == 0">
+        No books available
+    </div>
 </div>
+
 <div class="navBar">You are in: Home</div>
