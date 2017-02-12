@@ -4,12 +4,19 @@
 (function () {
     angular.module("app", ["ngRoute"]);
     angular.module("app").controller('CatalogController', BookCatalogController.Controller);
+    angular.module("app").controller('CatalogFormController', BookCatalogController.FormController);
 
     angular.module("app").filter('bookFilter', BookCatalogController.BookFilter);
 
     angular.module('app').value('server_url', 'http://127.0.0.1:8124');
 
     angular.module('app').factory('WebService', BookCatalogController.WebService);
+
+    angular.module("app").directive("bookcatalogForm", function() {
+        return {
+            templateUrl: "template_form.html"
+        };
+    });
 
     angular.module('app')
         .config(function ($routeProvider) {

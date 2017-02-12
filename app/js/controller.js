@@ -1,6 +1,6 @@
 BookCatalogController = {
     /**
-     * CatalogController
+     * List and Detail View controller
      */
     Controller: function($scope, $location, $rootScope, $routeParams, WebService){
         console.log("BookCatalogController -- location: " + $location.absUrl())
@@ -28,6 +28,15 @@ BookCatalogController = {
             // Clear the error message from previous requests
             $scope.errMessage = "";
         });
+    },
+
+    /**
+     * List and Detail View controller
+     */
+    FormController: function($scope, WebService){
+        $scope.openForm = function() {
+            alert("laal");
+        }
     },
 
     BookFilter: function() {
